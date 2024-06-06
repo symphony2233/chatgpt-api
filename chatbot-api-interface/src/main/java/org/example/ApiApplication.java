@@ -2,6 +2,7 @@ package org.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @description: 启动类
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @create: 2024/06/05
  **/
 @SpringBootApplication
+@EnableScheduling
 public class ApiApplication {
 
     public static void main(String[] args) {

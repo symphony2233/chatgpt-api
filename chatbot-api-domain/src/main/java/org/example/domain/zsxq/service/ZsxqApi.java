@@ -15,6 +15,6 @@ public interface ZsxqApi {
 
     ZsxqResp getAllComments(String groupId, String cookie) throws IOException;
 
-    boolean answer(String groupId, String cookie, String topicId, String text, boolean silenced) throws IOException;
+    boolean answer(String groupId, String cookie, String topicId, String answer, boolean silenced) throws IOException;
 
 }

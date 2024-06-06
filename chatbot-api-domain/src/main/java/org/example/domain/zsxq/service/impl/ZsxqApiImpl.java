@@ -55,7 +55,7 @@ public class ZsxqApiImpl implements ZsxqApi {
     }
 
     @Override
-    public boolean answer(String groupId, String cookie, String topicId, String text, boolean silenced) throws IOException {
+    public boolean answer(String groupId, String cookie, String topicId, String answer, boolean silenced) throws IOException {
         // 构造响应请求
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         String type = "comments";
@@ -65,18 +65,18 @@ public class ZsxqApiImpl implements ZsxqApi {
         post.addHeader("user-agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36");
 
 
-        // 构造响应结果
-        String paramJson = "{\n" +
-            "  \"req_data\": {\n" +
-            "    \"text\": \"自己去百度！\\n\",\n" +
-            "    \"image_ids\": [],\n" +
-            "    \"silenced\": false\n" +
-            "  }\n" +
-            "}";
+        // // 构造响应结果
+        // String paramJson = "{\n" +
+        //     "  \"req_data\": {\n" +
+        //     "    \"text\": \""+ answer +"\\n\",\n" +
+        //     "    \"image_ids\": [],\n" +
+        //     "    \"silenced\": false\n" +
+        //     "  }\n" +
+        //     "}";
 
-        // ReqData reqData = new ReqData(text, null, null);
-        // ZsxqReq zsxqReq = new ZsxqReq(reqData);
-        // String paramJson = JSONObject.toJSONString(zsxqReq);
+        ReqData reqData = new ReqData(answer, null, null);
+        ZsxqReq zsxqReq = new ZsxqReq(reqData);
+        String paramJson = JSONObject.toJSONString(zsxqReq);
 
         StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8"));
         post.setEntity(stringEntity);
