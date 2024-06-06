@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  * @create: 2024/06/05
  **/
 @SpringBootApplication
-@EnableScheduling
 public class ApiApplication {
 
     public static void main(String[] args) {

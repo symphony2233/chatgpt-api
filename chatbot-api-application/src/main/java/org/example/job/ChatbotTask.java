@@ -1,17 +1,13 @@
 package org.example.job;
 
 import com.alibaba.fastjson.JSON;
-
-
 import org.example.domain.ai.service.AiService;
 import org.example.domain.zsxq.model.res.ZsxqResp;
 import org.example.domain.zsxq.model.vo.Topics;
 import org.example.domain.zsxq.service.ZsxqApi;
-import org.springframework.beans.factory.annotation.Value;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.Calendar;
@@ -24,38 +20,52 @@ import java.util.Random;
  * @author: symphony
  * @create: 2024/06/06
  **/
-@Component
-public class ChatbotTask {
+
+public class ChatbotTask implements Runnable{
 
     private Logger logger = LoggerFactory.getLogger(ChatbotTask.class);
 
-    @Value("${chatbot-api.group01.groupId}")
+
     private String groupId;
-    @Value("${chatbot-api.group01.cookie}")
+
     private String zxxqCookie;
 
-    @Value("${chatbot-api.gpt1.gptUrl}")
+
     private String gptUrl;
 
-    @Value("${chatbot-api.gpt1.openAiKey}")
+
     private String openAiKey;
 
-    @Value("${chatbot-api.gpt1.modelType}")
+
     private String modelType;
 
-    @Value("${chatbot-api.group01.groupName}")
+
     private String groupName;
 
-    @Value("${chatbot-api.group01.cookie}")
+
     private String cookie;
 
-    @Resource
     private ZsxqApi zsxqApi;
 
-    @Resource
     private AiService aiService;
 
-    @Scheduled(cron = "0/5 * * * * ?")
+    public ChatbotTask(String groupId, String zxxqCookie, String gptUrl,
+                       String openAiKey, String modelType, String groupName, String cookie,
+                       ZsxqApi zsxqApi, AiService aiService) {
+        this.groupId = groupId;
+        this.zxxqCookie = zxxqCookie;
+        this.gptUrl = gptUrl;
+        this.openAiKey = openAiKey;
+        this.modelType = modelType;
+        this.groupName = groupName;
+        this.cookie = cookie;
+        this.zsxqApi = zsxqApi;
+        this.aiService = aiService;
+    }
+
+
+
+    // @Scheduled(cron = "0/10 * * * * ?")
     public void run() {
         try {
             // 随机打样，防止被知识星球监控
