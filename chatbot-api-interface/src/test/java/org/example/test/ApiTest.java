@@ -74,4 +74,33 @@ public class ApiTest {
             System.out.println("回答问题响应为：" + response.getStatusLine().getStatusCode());
         }
     }
+
+
+    @Test
+    public void test_chatGPT() throws IOException {
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        String gptUrl = "https://api.ai-gaochao.cn" + "/v1/chat/completions";
+        String gptToken = "sk-Jwdq1qsie0uhkcJtA994D71f0f1c497f8c97057d846c3aF6";
+        String modelType = "gpt-3.5-turbo";
+        HttpPost post = new HttpPost(gptUrl);
+        post.addHeader("Content-Type", "application/json");
+        post.addHeader("Authorization", "Bearer " + gptToken);
+
+        String paramJson = "{\"model\": \"" + modelType + "\", \"messages\": [{\"role\": \"user\", \"content\": \"写一首打油诗\"}]}";
+
+        StringEntity stringEntity = new StringEntity(paramJson, ContentType.APPLICATION_JSON);
+        // StringEntity stringEntity = new StringEntity(paramJson, ContentType.create("text/json", "UTF-8")); // 与上面的倒霉都可以
+        post.setEntity(stringEntity);
+
+        CloseableHttpResponse response = httpClient.execute(post);
+
+        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+            String res = EntityUtils.toString(response.getEntity());
+            System.out.println(res);
+        } else {
+            System.out.println(response.getStatusLine().getStatusCode());
+        }
+
+    }
+
 }
