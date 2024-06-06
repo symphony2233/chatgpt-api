@@ -3,18 +3,28 @@ server:
 
 # 分组任务配置
 chatbot-api:
-  launchList: group01,group02 # 启动几组，就配置几组
+  launchList: group01,group02,gpt1,gpt2 # 启动几组，就配置几组
   group01:
     groupName: ChatGPT AI 问答助手
-    groupId: 28885518425541 # 知识星球ID
-    cookie:  # 知识星球个人cookie信息
-    openAiKey:  # 自行申请 https://beta.openai.com/overview 或者联系小傅哥 fustack 付费申请【购买虚拟号码等需要支付】。
-    cronExpression: 0/30 * * * * ? # 执行的频次配置，参考：cron.qqe2.com
-    silenced: false
-  group02:
-    groupName: 码农会锁
-    groupId: 28885518425541 # 知识星球ID
-    cookie:  # 知识星球个人cookie信息
-    openAiKey:  # 自行申请 https://beta.openai.com/overview 或者联系小傅哥 fustack 付费申请【购买虚拟号码等需要支付】。
-    cronExpression: 0/30 * * * * ? # 执行的频次配置，参考：cron.qqe2.com
-    silenced: true
+    groupId: 51111528442184 # 知识星球ID
+    cookie: sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%22215554242248811%22%2C%22first_id%22%3A%2218b2185fddd1dc-0fcda48e6ed3f68-7b515474-1327104-18b2185fdde46%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%2C%22%24latest_referrer%22%3A%22%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMThiMjE4NWZkZGQxZGMtMGZjZGE0OGU2ZWQzZjY4LTdiNTE1NDc0LTEzMjcxMDQtMThiMjE4NWZkZGU0NiIsIiRpZGVudGl0eV9sb2dpbl9pZCI6IjIxNTU1NDI0MjI0ODgxMSJ9%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%24identity_login_id%22%2C%22value%22%3A%22215554242248811%22%7D%2C%22%24device_id%22%3A%2218b2185fddd1dc-0fcda48e6ed3f68-7b515474-1327104-18b2185fdde46%22%7D; zsxqsessionid=e04a244564a35d77f51eedb7e5d59237; abtest_env=product; tfstk=fj0jTdOWctXXKCl7IodzPBYJPBU6axTel1NttfQV6rUAB1eSgZWa0fesCYyo7tRDjuHSEYDqgfusqNGnsqR07I4miP49Lp8E5jc0S2VvML3Xy7FswtQOWmUjg7U9Lp8rJRbYfPnwnbcgPbeu1ZQTBAFRw8VFkPeYXTI898eTWPHTyTF4_SBYMNLRebnhO5tbnj9aLuDpzhAqi8_OR6VaDCcRbGs11SrLpoy5Wfg7GowKGqxobDF-z4ZU41JzyXmrH7aBl9Vj2XaY1VAdfRZsozwSdeQgZmHjylgyseGul5ZLWu1OWba8BkguJeB7Z0hqXqDf1NFmu2r_KuOOSlz-8knKh1AnwrFtIk0wKZ2x6X0nYyTfKSi-OzsPGwyCqFI1Nkb_NJRWNGjZmPJ8_T8a_HZYZSZyNQ6xj9bO8TAWNGj3D7VbHQO5Hc1..; zsxq_access_token=03408E3D-72A0-9207-622E-174746DA6522_0E03217866F93CE3
+
+  gpt1:
+    gptUrl: https://api.ai-gaochao.cn/v1/chat/completions
+    openAiKey: sk-Jwdq1qsie0uhkcJtA994D71f0f1c497f8c97057d846c3aF6
+    modelType: gpt-3.5-turbo
+
+  gpt2:
+    gptUrl: https://api5.ai-gaochao.net/v1/chat/completions
+    openAiKey: sk-RR9yKHmsUBuxpNsTF0FcC5Fc5064426fA803AbC2D17a27A7
+    modelType: gpt-3.5-turbo
+
+
+
+#  group02:
+#    groupName: 码农会锁
+#    groupId: 28885518425541 # 知识星球ID
+#    cookie:  # 知识星球个人cookie信息
+#    openAiKey:  # 自行申请 https://beta.openai.com/overview 或者联系小傅哥 fustack 付费申请【购买虚拟号码等需要支付】。
+#    cronExpression: 0/30 * * * * ? # 执行的频次配置，参考：cron.qqe2.com
+#    silenced: true
